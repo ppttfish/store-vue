@@ -27,6 +27,7 @@ export default {
     align-items center
     height 70px
     padding 0 20px
+    background-color #fff
     .navbar-left-container
       display block
       width 50px
