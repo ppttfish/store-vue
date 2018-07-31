@@ -3,9 +3,9 @@
     <div class="nav-filter">
       <span>Sort by:</span>
       <a class="default">Default</a>
-      <a>Price
+      <a @click="hanldPriceClick">Price
         <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-shang1"></use>
+          <use :xlink:href="arror"></use>
         </svg>
       </a>
     </div>
@@ -14,7 +14,21 @@
 
 <script>
 export default {
-  name: 'navFilter'
+  name: 'navFilter',
+  data () {
+    return {
+      arror: '#icon-shang1'
+    }
+  },
+  methods: {
+    hanldPriceClick () {
+      if (this.arror === '#icon-shang1') {
+        this.arror = '#icon-xia'
+      } else {
+        this.arror = '#icon-shang1'
+      }
+    }
+  }
 }
 </script>
 
