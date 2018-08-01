@@ -2,7 +2,9 @@
   <div>
     <nav-header></nav-header>
     <nav-bread></nav-bread>
-    <nav-filter></nav-filter>
+    <div class="container">
+      <nav-filter></nav-filter>
+    </div>
   </div>
 </template>
 
@@ -20,6 +22,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="stylus" scoped>
+  .container
+    max-width 1280px
+    margin 0 auto
+    padding 0 10px
 </style>
