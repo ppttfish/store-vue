@@ -1,14 +1,12 @@
 <template>
-  <div class="container">
-    <div class="nav-filter">
-      <span>Sort by:</span>
-      <a class="default">Default</a>
-      <a @click="hanldPriceClick">Price
-        <svg class="icon" aria-hidden="true">
-          <use :xlink:href="arror"></use>
-        </svg>
-      </a>
-    </div>
+  <div class="nav-filter">
+    <span>Sort by:</span>
+    <a class="default">Default</a>
+    <a @click="hanldPriceClick">Price
+      <svg class="icon" aria-hidden="true">
+        <use :xlink:href="arror"></use>
+      </svg>
+    </a>
   </div>
 </template>
 
@@ -37,7 +35,6 @@ export default {
     height 55px
     line-height 55px
     margin 60px 0 30px
-    padding: 0 20px
     background: #fff
     text-align: right
     overflow: hidden

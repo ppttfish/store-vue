@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="">
     <nav-header></nav-header>
-    <nav-bread></nav-bread>
+    <nav-bread class="container"></nav-bread>
     <div class="container">
       <nav-filter></nav-filter>
+      <goods-list></goods-list>
     </div>
   </div>
 </template>
@@ -12,12 +13,14 @@
 import NavHeader from './components/Header'
 import NavBread from './components/NavBread'
 import NavFilter from './components/NavFilter'
+import GoodsList from './components/GoodsList'
 export default {
   name: 'home',
   components: {
     NavHeader,
     NavBread,
-    NavFilter
+    NavFilter,
+    GoodsList
   }
 }
 </script>
