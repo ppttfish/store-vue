@@ -1,11 +1,22 @@
 <template>
   <div class="fliter-slide">
     <span>price:</span>
+    <ul>
+      <li 
+        @click="priceFlag = 'all'"
+        :class="{ cur: priceFlag === 'all' }"
+        >
+        All
+      </li>
+    </ul>
     <ul
       v-for="(price, index) in priceList"
       :key="index"
     >
-      <li>{{ index === 0 ? 'All' : price.min + ' - ' + price.max }}</li>
+      <li
+        @click="priceFlag = index"
+        :class="{ cur : priceFlag === index }"
+      >{{ price.min + ' - ' + price.max }}</li>
     </ul>
   </div>
 </template>
@@ -15,11 +26,8 @@ export default {
   name: 'filterSlide',
   data () {
     return {
+      priceFlag: 'all',
       priceList: [
-        {
-          min: 'all',
-          max: 'all'
-        },
         {
           min: '0.00',
           max: '100.00'
