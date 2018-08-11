@@ -15,16 +15,20 @@ export default {
   name: 'navFilter',
   data () {
     return {
-      arror: '#icon-shang1'
+      arror: '#icon-shang1',
+      sortFlag: 1
     }
   },
   methods: {
     hanldPriceClick () {
       if (this.arror === '#icon-shang1') {
         this.arror = '#icon-xia'
+        this.sortFlag = -1
       } else {
         this.arror = '#icon-shang1'
+        this.sortFlag = 1
       }
+      this.$emit('sortFlag', this.sortFlag)
     }
   }
 }

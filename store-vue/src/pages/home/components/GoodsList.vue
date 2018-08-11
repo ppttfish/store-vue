@@ -2,63 +2,49 @@
   <div class="goods-list">
     <filter-slide></filter-slide>
     <div class="goods">
-      <ul 
-        v-for="good in goodsList"
-        :key="good.id"  
+      <ul
+        v-for="good in list"
+        :key="good._id"
       >
         <li>
           <div class="pic">
             <a>
-              <img :src="good.imgUrl" alt="">
+              <img :src="'static/pic/' + good.productImage" alt="">
             </a>
           </div>
           <div class="main">
-            <div class="name">{{ good.name }}</div>
-            <div class="price">{{ '￥' + good.price }}</div>
+            <div class="name">{{ good.productName }}</div>
+            <div class="price">{{ '￥' + good.salePrice }}</div>
             <a class="buyBtn">加入购物车</a>
           </div>
         </li>
       </ul>
+      <infinite-loading @infinite="infiniteHandler" spinner="waveDots"></infinite-loading>
     </div>
   </div>
 </template>
 
 <script>
 import FilterSlide from './FilterSlide'
+import InfiniteLoading from 'vue-infinite-loading'
 export default {
   name: 'goodList',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      goodsList: [
-        {
-          id: '00001',
-          name: '小米6',
-          price: '2699',
-          imgUrl: 'static/pic/mi6.jpg'
-        },
-        {
-          id: '00002',
-          name: '小米平衡车',
-          price: '2699',
-          imgUrl: 'static/pic/pingheng.jpg'
-        },
-        {
-          id: '00003',
-          name: '小米自拍杆',
-          price: '69',
-          imgUrl: 'static/pic/zipai.jpg'
-        },
-        {
-          id: '00004',
-          name: '小米电视',
-          price: '4999',
-          imgUrl: 'static/pic/10.jpg'
-        },
-      ]
+      goodsList: []
     }
   },
   components: {
-    FilterSlide
+    FilterSlide,
+    InfiniteLoading
+  },
+  methods: {
+    infiniteHandler ($state) {
+      this.$emit('infinite', $state)
+    }
   }
 }
 </script>

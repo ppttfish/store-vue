@@ -2,7 +2,7 @@
   <div class="fliter-slide">
     <span>price:</span>
     <ul>
-      <li 
+      <li
         @click="priceFlag = 'all'"
         :class="{ cur: priceFlag === 'all' }"
         >
