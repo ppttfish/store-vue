@@ -4,7 +4,7 @@
       <img src="../../../assets/pic/logo.png" alt="">
     </router-link>
     <div class="navbar-right-container">
-      <router-link to="/" class="navbar-login-link nav-link">login</router-link>
+      <div class="navbar-login-link nav-link" @click="handleLogin">login</div>
       <router-link to="/" class="navbar-cart-link nav-link">
         <svg class="icon cart-link" aria-hidden="true">
           <use xlink:href="#icon-gouwuche"></use>
@@ -16,7 +16,12 @@
 
 <script>
 export default {
-  name: 'navHeader'
+  name: 'navHeader',
+  methods: {
+    handleLogin () {
+      this.$store.commit('modalFlag', true)
+    }
+  }
 }
 </script>
 
@@ -39,6 +44,7 @@ export default {
       align-items center
       .nav-link
         padding-left 15px
+        cursor pointer
       .navbar-login-link
         color #666
         font-size 16px

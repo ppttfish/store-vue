@@ -2,11 +2,11 @@
   <div class="goods-list">
     <filter-slide></filter-slide>
     <div class="goods">
-      <ul
-        v-for="good in list"
-        :key="good._id"
-      >
-        <li>
+      <ul>
+        <li
+          v-for="good in list"
+          :key="good._id"
+        >
           <div class="pic">
             <a>
               <img :src="'static/pic/' + good.productImage" alt="">
@@ -15,22 +15,26 @@
           <div class="main">
             <div class="name">{{ good.productName }}</div>
             <div class="price">{{ '￥' + good.salePrice }}</div>
-            <a class="buyBtn">加入购物车</a>
+            <a class="buyBtn" @click="addCart">加入购物车</a>
           </div>
         </li>
       </ul>
-      <infinite-loading @infinite="infiniteHandler" spinner="waveDots"></infinite-loading>
+      <div v-infinite-scroll="loadMore" infinite-scroll-distance="10">
+         加载中...
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import FilterSlide from './FilterSlide'
-import InfiniteLoading from 'vue-infinite-loading'
+import axios from 'axios'
+// import InfiniteLoading from 'vue-infinite-loading'
 export default {
   name: 'goodList',
   props: {
-    list: Array
+    list: Array,
+    scolleParams: Object
   },
   data () {
     return {
@@ -38,12 +42,19 @@ export default {
     }
   },
   components: {
-    FilterSlide,
-    InfiniteLoading
+    FilterSlide
   },
   methods: {
-    infiniteHandler ($state) {
-      this.$emit('infinite', $state)
+    // infiniteHandler ($state) {
+    //   this.$emit('infinite', $state)
+    // }
+    loadMore () {
+      console.log(`i am here`)
+      this.$emit('scolle')
+    },
+    addCart () {
+      axios.post('/goods/addCart')
+      alert('添加成功')
     }
   }
 }
@@ -55,6 +66,8 @@ export default {
     .goods
       flex 1
       ul
+        overflow auto
+        padding 10px 0
         li
           float left
           width 23%
